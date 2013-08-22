@@ -3,6 +3,8 @@
 
 QGoogleSpeech::QGoogleSpeech(QString language)
 {
+    m_url = "http://translate.google.com/translate_tts?ie=UTF-8&tl=%1&q=%2";
+
     m_language = language;
 
     m_playlist = new QMediaPlaylist;
@@ -27,7 +29,9 @@ void QGoogleSpeech::setLanguage(QString language)
 void QGoogleSpeech::speech(QString text)
 {
     if (QMultimedia::Available == 0)  {
-        m_playlist->addMedia(QUrl("http://translate.google.com/translate_tts?ie=UTF-8&tl=it&q=" + text));
+        QString i;
+        text.replace(" ","+");
+        m_playlist->addMedia(QUrl(m_url.arg(i).arg(m_language).arg(text)));
         m_player->setPlaylist(m_playlist);
         m_player->play();
     } else {

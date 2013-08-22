@@ -13,6 +13,7 @@ private:
     QString m_language;
     QMediaPlaylist *m_playlist;
     QMediaPlayer *m_player;
+    QString m_url;
 public:
     QGoogleSpeech(QString language);
     void setLanguage(QString language);
