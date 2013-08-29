@@ -31,7 +31,7 @@ void QGoogleSpeech::speech(QString text)
     if (QMultimedia::Available == 0)  {
         QString i;
         text.replace(" ","+");
-        m_playlist->addMedia(QUrl(m_url.arg(i).arg(m_language).arg(text)));
+        m_playlist->addMedia(QUrl(m_url.arg(m_language).arg(text)));
         m_player->setPlaylist(m_playlist);
         m_player->play();
     } else {
